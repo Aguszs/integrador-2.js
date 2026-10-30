@@ -1,27 +1,32 @@
 # Estudio de Uñas
 
-Sitio de práctica para un estudio de manicura. Tiene una portada, galería de diseños, catálogo de servicios, reseñas, contacto y un carrito de demostración. Está hecho con HTML, CSS y JavaScript.
+Sitio web de práctica para un estudio de manicura, desarrollado con HTML, CSS y JavaScript.
 
 **Demo:** https://integrador-2-js.vercel.app
 
 ## Funcionalidades
 
-- Catálogo de servicios y filtro por nombre.
-- Carrito con cantidades, eliminación de productos y total.
+- Catálogo de servicios con búsqueda por nombre.
+- Carrito con cantidades, eliminación de productos, vaciado y cálculo del total.
+- Confirmación visual al finalizar la compra y limpieza del carrito.
 - Menú adaptable a pantallas chicas.
-- Acceso y registro simulados con datos locales del navegador.
-- Secciones de galería, reseñas, publicaciones y contacto.
+- Galería de diseños, reseñas, publicaciones y contacto.
+- Acceso y registro con datos guardados en el navegador.
 
 ## Tecnologías
 
 HTML5 · CSS3 · JavaScript · SweetAlert2 · Font Awesome · Vercel
 
-## Cómo correrlo
+## Ejecutar en local
 
-1. Cloná el repositorio: `git clone https://github.com/Aguszs/integrador-2.js.git`
-2. Abrí la carpeta con Live Server o con otro servidor estático.
-3. Entrá a `signUp.index.html` para crear un usuario de prueba; después usá `login.index.html`.
+1. Cloná el repositorio:
+   ```bash
+   git clone https://github.com/Aguszs/integrador-2.js.git
+   cd integrador-2.js
+   ```
+2. Abrí el proyecto con Live Server o con otro servidor estático.
+3. Para recorrer el acceso, abrí `signUp.index.html` y luego `login.index.html`.
 
 ## Alcance
 
-El carrito y el inicio de sesión son demostraciones que usan `localStorage`. No hay procesamiento de pagos, reservas ni autenticación segura. No ingreses datos personales ni contraseñas que uses en otros sitios.
+El carrito y el acceso funcionan del lado del navegador. El sitio no procesa pagos, registra reservas ni ofrece autenticación segura; los datos locales no se comparten entre dispositivos.
