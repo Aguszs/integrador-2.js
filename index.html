@@ -69,7 +69,7 @@
         </div>-->
 
             <div class="modal-body"></div>
-            <a href="#" class="btn" id="vaciarCarrito"> Vaciar Carrito</button>
+            <button type="button" class="btn" id="vaciarCarrito">Vaciar carrito</button>
             <button type="button" class="btn" id="procesarCompra"> Continuar Compra</button>
             <span class="precio">Precio Total:$
                 <p class="precioTotal" id="precioTotal"></p>
@@ -106,125 +106,17 @@
         </div>
     </section>
     <section class="menu" id="servicios">
-
-        <h1 class="heading">
-            Nuestros <span>Servicios</span>
-        </h1>
-
-        <div class="box-container" id="contenedor"></div>
+        <h1 class="heading">Servicios <span>y turnos</span></h1>
+        <div class="service-cta">
+            <p>¿Querés consultar por un servicio o reservar un turno?</p>
+            <a href="#contacto" class="btn">Consultar un turno</a>
+        </div>
     </section>
     
     <section class="products" id="products">
-        <h1 class="heading"> Proxi<span>mamente...</span></h1>
-        <div class="box-container">
-            <div class="box">
-                <!-- <div class="icon">
-                    <a href="#" class="fas fa-shopping-cart"></a>
-                    <a href="#" class="fas fa-heart"></a>
-                    <a href="#" class="fas fa-eye"></a>
-                </div> -->
-                <div class="image">
-                    <img src="/css/diseños-uñas-mujeres-40-3.jpg" class="retro" alt="">
-                </div>
-                <div class="content">
-                    <h3>Retro</h3>
-                    <div class="start">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <p class="price">Estilo retro y relajado para salidas con amigas</p>
-                </div>
-            </div>
-            <div class="box">
-
-                <div class="image">
-                    <img src="/css/diseños-uñas-mujeres-40-8.jpg" alt="">
-                </div>
-                <div class="content">
-                    <h3>Estilo Marfil</h3>
-                    <div class="start">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <p class="price">Estilo marfil delicado y artistico</p>
-                </div>
-            </div>
-            <div class="box">
-
-                <div class="image">
-                    <img src="/css/uñas-estructurales-2.jpg" alt="">
-                </div>
-                <div class="content">
-                    <h3>Textura de Piedra</h3>
-                    <div class="start">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <p class="price">Estilo de con textura de piedras</p>
-                </div>
-            </div>
-            <div class="box">
-
-                <div class="image">
-                    <img src="/css/uñas-estructurales-3.jpg" alt="">
-                </div>
-                <div class="content">
-                    <h3>Animal Print</h3>
-                    <div class="start">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <p class="price">Animal Print, algo mas fuera de lo clasico</p>
-                </div>
-            </div>
-            <div class="box">
-
-                <div class="image">
-                    <img src="/css/uñas-estructurales-5.jpg" alt="">
-                </div>
-                <div class="content">
-                    <h3>Dorado clasico</h3>
-                    <div class="start">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <p class="price">Algo mas sencillo con detalles en Dorado</p>
-                </div>
-            </div>
-            <div class="box">
-
-                <div class="image">
-                    <img src="/css/uñas-estructurales-6.jpg" alt="">
-                </div>
-                <div class="content">
-                    <h3>Puntas Magicas</h3>
-                    <div class="start">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <p class="price">Detalles brilloso en las puntas</p>
-                </div>
-            </div>
-        </div>
-
+        <h1 class="heading">Diseños <span>disponibles</span></h1>
+        <p class="catalog-intro">Elegí un diseño para ver el detalle y agregarlo al carrito.</p>
+        <div class="box-container" id="contenedor" aria-live="polite"></div>
     </section>
     <section class="review" id="review">
         <h1 class="heading"> Nuestra <span>Reputacion </span></h1>
