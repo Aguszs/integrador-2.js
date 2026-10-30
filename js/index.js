@@ -250,21 +250,13 @@ vaciarCarrito?.addEventListener('click', () => {
 
 procesarCompra?.addEventListener('click', () => {
     if (carrito.length === 0) {
-        Swal.fire({
-            title: 'Tu carrito está vacío',
-            text: 'Agregá un producto para continuar.',
-            icon: 'info',
-            confirmButtonText: 'Volver al catálogo'
-        });
+        window.alert('Tu carrito está vacío.');
         return;
     }
 
-    Swal.fire({
-        title: 'Pedido listo para coordinar',
-        text: 'Revisá el detalle del carrito y contactanos para confirmar disponibilidad y forma de pago.',
-        icon: 'success',
-        confirmButtonText: 'Aceptar'
-    });
+    carrito = [];
+    actualizarCarrito();
+    window.alert('¡Compra realizada con éxito!');
 });
 
 renderizarProductos();
