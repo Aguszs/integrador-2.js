@@ -23,7 +23,7 @@ section{
     justify-content: center;
     flex-direction: column;
     padding: 1em;
-    background: url(/integrador-2.js/css/Tendencias-de-uñas-2023.jpg) ;
+    background: url("./Tendencias-de-uñas-2023.jpg") center / cover no-repeat;
 }
 
 
@@ -100,3 +100,13 @@ section p{
 
 
 
+
+
+.demo-notice {
+    max-width: 32rem;
+    margin: 1rem auto 0;
+    color: #fff;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    text-align: center;
+}
