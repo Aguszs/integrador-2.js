@@ -54,11 +54,11 @@ const readSession = () => {
     }
 };
 
-if (!readSession()) {
-    window.location.href = 'login.index.html';
-}
+// El catálogo se puede consultar sin iniciar sesión.
+const logOutButton = document.querySelector('#logOut');
+if (!readSession()) logOutButton?.setAttribute('hidden', '');
 
-document.querySelector('#logOut')?.addEventListener('click', () => {
+logOutButton?.addEventListener('click', () => {
     localStorage.removeItem('login_success');
     window.location.href = 'login.index.html';
 });
