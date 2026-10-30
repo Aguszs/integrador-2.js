@@ -1,25 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styles.css">
-    <title>Registro</title>
+    <title>Registro | Estudio de Uñas</title>
 </head>
 <body>
     <section>
         <h2>Registro</h2>
         <form id="signupForm">
             <label>Nombre</label>
-            <input type="text" placeholder="Ingresar su Nombre" id="name" required autofocus>
+            <input type="text" placeholder="Ingresar su Nombre" id="name" autocomplete="name" required autofocus>
             <label>Mail</label>
-            <input type="email" placeholder="Ingresar su Email" id="email" required>
+            <input type="email" placeholder="Ingresar su Email" id="email" autocomplete="email" required>
             <label>Contraseña</label>
-            <input type="password" placeholder="Ingresar su Contraseña" id="password" required>
+            <input type="password" placeholder="Ingresar su Contraseña" id="password" autocomplete="new-password" required>
             <input type="submit" value="Registro">
         </form>
-        <p>Ya tienes una cuenta? <a href="login.index.html">Login</a></p>
+        <p>Ya tenés una cuenta? <a href="login.index.html">Iniciá sesión</a></p>
+        <p class="demo-notice">Registro de demostración: los datos se guardan solo en este navegador. No uses una contraseña real.</p>
     </section>
     <script src="js/signUp.js"></script>
 </body>
