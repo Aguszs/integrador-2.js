@@ -10,7 +10,7 @@ Sitio de práctica para un estudio de manicura. Tiene una portada, galería de d
 - Carrito con cantidades, eliminación de productos y total.
 - Menú adaptable a pantallas chicas.
 - Acceso y registro simulados con datos locales del navegador.
-- Carrusel y secciones de galería, reseñas y contacto.
+- Secciones de galería, reseñas, publicaciones y contacto.
 
 ## Tecnologías
 
