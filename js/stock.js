@@ -73,7 +73,7 @@ stockProductos.forEach((prod)=>{
 })
 
 vaciarCarrito.addEventListener("click", () => {
-  carrito.length = [];
+  carrito.length = 0;
   mostrarCarrito();
 }); 
 
@@ -86,7 +86,16 @@ if (procesarCompra) {
         icon: "error",
         confirmButtonText: "Aceptar",
       });
-    } 
+    } else {
+      Swal.fire({
+        title: "¡Compra realizada!",
+        text: "Gracias por tu compra",
+        icon: "success",
+        confirmButtonText: "Aceptar",
+      });
+      carrito.length = 0;
+      mostrarCarrito();
+    }
   });
 }
 
@@ -113,7 +122,6 @@ const mostrarCarrito = () => {
     modalBody.innerHTML = "";
     carrito.forEach((prod) => {
       const { id, nombre, precio, desc, img, cantidad } = prod;
-      console.log(modalBody);
       modalBody.innerHTML += `
       <div class="modal-contenedor">
       
@@ -135,12 +143,10 @@ const mostrarCarrito = () => {
 
 
 if (carrito.length === 0) {
-    console.log("Nada");
     modalBody.innerHTML = `
     <p class="text-center text-primary parrafo">¡Aun no agregaste nada!</p>
     `;
   } else {
-    console.log("Algo");
   }
   carritoContenedor.textContent = carrito.length;
 
@@ -162,6 +168,4 @@ function eliminarProducto(id) {
   const juegoId = id;
   carrito = carrito.filter((juego) => juego.id !== juegoId);
   mostrarCarrito();
-
-  localStorage.clear()
 }
