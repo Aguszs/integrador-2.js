@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Roboto:wght@400;500;700&display=swap');
 
 :root {
-    --main-color: var(#d3ad7f);
+    --main-color: #d3ad7f;
     --black: black;
     --bg: #010103;
     --border: .1rem solid rgba(255, 255, 255, .3);
@@ -22,7 +22,8 @@
 
 html {
     font-size: 62.5%;
-    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: auto;
     scroll-padding-top: 9rem;
     scroll-behavior: smooth;
 }
@@ -160,7 +161,7 @@ header .navbar a:hover {
     text-transform: none;
 }
 
-.header .search-form input label {
+.header .search-form label {
     cursor: pointer;
     font-size: 2.2rem;
     margin-right: 1.5rem;
@@ -786,4 +787,88 @@ header .navbar a:hover {
     }
 
 
+}
+
+/* Ajustes para búsqueda, teclado y pantallas chicas */
+[hidden] {
+    display: none !important;
+}
+
+#menu-btn:focus-visible,
+#search-btn:focus-visible,
+#cart-btn:focus-visible,
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+    outline: 3px solid #fff;
+    outline-offset: 3px;
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 1rem 4%;
+    }
+
+    .header .search-form {
+        right: 4%;
+        width: min(50rem, 92vw);
+    }
+
+    .header .cart-items-container {
+        width: min(35rem, 92vw);
+    }
+
+    .home {
+        min-height: 72vh;
+        height: auto;
+        padding-top: 10rem;
+        padding-bottom: 5rem;
+        background-position: center;
+    }
+
+    .home .content h3 {
+        font-size: clamp(3.2rem, 9vw, 5rem);
+    }
+
+    .contact .row .maps {
+        min-height: 30rem;
+        flex-basis: 100%;
+    }
+
+    .contact .row form {
+        flex-basis: 100%;
+        padding: 2rem 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    html {
+        font-size: 55%;
+    }
+
+    section {
+        padding: 2rem 5%;
+    }
+
+    .heading {
+        font-size: 3rem;
+    }
+
+    .header .icons div {
+        margin-left: 1rem;
+    }
+
+    #cart-btn {
+        margin-left: 1rem;
+    }
+
+    .menu .box-container,
+    .products .box-container,
+    .blogs .box-container {
+        grid-template-columns: 1fr;
+    }
+
+    .menu .box-container .box {
+        padding: 2.5rem;
+    }
 }
