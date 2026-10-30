@@ -1,42 +1,27 @@
-# Nail Studio · Tienda y turnos 💅
+# Estudio de Uñas
 
-Sitio web de un estudio de uñas con catálogo de productos, carrito de compras y sistema de registro/inicio de sesión. Hecho con **HTML, CSS y JavaScript puro**, como proyecto integrador del curso de Desarrollador FullStack en Nucba.
+Sitio de práctica para un estudio de manicura. Tiene una portada, galería de diseños, catálogo de servicios, reseñas, contacto y un carrito de demostración. Está hecho con HTML, CSS y JavaScript.
 
 **Demo:** https://integrador-2-js.vercel.app
 
 ## Funcionalidades
 
-- **Registro e inicio de sesión simulados:** los usuarios se guardan en `localStorage` (es una simulación para practicar; no es autenticación real). Valida mail repetido y credenciales incorrectas.
-- **Página protegida:** si no iniciaste sesión, te redirige al login. Incluye botón de cerrar sesión.
-- **Catálogo dinámico:** los productos se renderizan con JavaScript desde un array de objetos.
-- **Carrito de compras:** agregar productos, sumar cantidades, eliminar, vaciar, total calculado y persistencia entre recargas con `localStorage`.
-- **Alertas** con [SweetAlert2](https://sweetalert2.github.io/) al finalizar la compra o intentar comprar con el carrito vacío.
-- Diseño **responsive**, menú desplegable, buscador, galería, reseñas y mapa de ubicación.
+- Catálogo de servicios y filtro por nombre.
+- Carrito con cantidades, eliminación de productos y total.
+- Menú adaptable a pantallas chicas.
+- Acceso y registro simulados con datos locales del navegador.
+- Carrusel y secciones de galería, reseñas y contacto.
 
 ## Tecnologías
 
-HTML5 · CSS3 · JavaScript (ES6) · SweetAlert2 · Font Awesome · Git/GitHub · Vercel
+HTML5 · CSS3 · JavaScript · SweetAlert2 · Font Awesome · Vercel
 
-## Estructura
+## Cómo correrlo
 
-```
-index.html          Página principal (requiere sesión iniciada)
-login.index.html    Inicio de sesión
-signUp.index.html   Registro
-js/index.js         Menú, buscador y control de sesión
-js/stock.js         Productos y carrito
-js/login.js         Lógica de login
-js/signUp.js        Lógica de registro
-css/                Estilos e imágenes
-```
+1. Cloná el repositorio: `git clone https://github.com/Aguszs/integrador-2.js.git`
+2. Abrí la carpeta con Live Server o con otro servidor estático.
+3. Entrá a `signUp.index.html` para crear un usuario de prueba; después usá `login.index.html`.
 
-## Cómo correrlo en local
+## Alcance
 
-1. Clonar: `git clone https://github.com/Aguszs/integrador-2.js.git`
-2. Abrir la carpeta con un servidor local (por ejemplo, la extensión *Live Server* de VS Code).
-3. Entrar a `login.index.html`, crear una cuenta y luego iniciar sesión.
-
-## Mejoras pendientes
-
-- Reemplazar el login simulado por un backend con base de datos.
-- Hashear las contraseñas y manejar sesiones de verdad.
+El carrito y el inicio de sesión son demostraciones que usan `localStorage`. No hay procesamiento de pagos, reservas ni autenticación segura. No ingreses datos personales ni contraseñas que uses en otros sitios.
