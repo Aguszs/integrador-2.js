@@ -1,19 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Diseños, productos y servicios de manicura en Estudio de Uñas.">
     <link rel="stylesheet" href="/css/style.css">
     <script src="https://kit.fontawesome.com/0298b650a2.js" crossorigin="anonymous"></script>
-    <title>Estudio de Uñas</title>
+    <title>Estudio de Uñas | Manicura</title>
 </head>
 
 <body>
     <header class="header">
         <a href="#" class="logo">
-            <img src="/css/img/logo.png" alt="logo">
+            <img src="/css/img/logo.png" alt="Estudio de Uñas">
         </a>
         <nav class="navbar">
             <a href="#home">home</a>
@@ -26,25 +27,25 @@
         </nav>
 
         <div class="icons">
-            <div class="fa-solid fa-magnifying-glass" id="search-btn">
-                </iclass=>
+            <div class="fa-solid fa-magnifying-glass" id="search-btn" role="button" tabindex="0" aria-label="Abrir búsqueda">
+                
             </div>
             <div class="fas fa-user" id="">
                 </iclass=>
             </div>
 
-            <div class="fa-solid fa-bars" id="menu-btn">
+            <div class="fa-solid fa-bars" id="menu-btn" role="button" tabindex="0" aria-label="Abrir menú" aria-expanded="false">
                 </iclass=>
             </div>
 
         </div>
-        <div class="fa-solid fa-cart-shopping" id="cart-btn">
-            <p>0</p>
+        <div class="fa-solid fa-cart-shopping" id="cart-btn" role="button" tabindex="0" aria-label="Abrir carrito">
+            <p aria-hidden="true">0</p>
             </iclass=>
 
         </div>
         <div class="search-form">
-            <input type="search" id="search-box" placeholder="buscar aqui ...">
+            <input type="search" id="search-box" placeholder="Buscar diseños..." aria-label="Buscar servicios por nombre">
             <label for="search-box" class="fa-solid fa-magnifying-glass"></label>
         </div>
         <div class="cart-items-container">
@@ -67,12 +68,12 @@
                 <h4>total: $100</h4>
             </div>
              <a href="#" class="btn">Comprar Ahora</a>
-             <a href="#" class="btn" id="vaciarCarrito"> Vaciar Ahora</a>
+             <button type="button" class="btn" id="vaciarCarrito"> Vaciar Ahora</a>
         </div>-->
 
             <div class="modal-body"></div>
-            <a href="#" class="btn" id="vaciarCarrito"> Vaciar Carrito</a>
-            <a href="#" class="btn" id="procesarCompra"> Continuar Compra</a>
+            <a href="#" class="btn" id="vaciarCarrito"> Vaciar Carrito</button>
+            <button type="button" class="btn" id="procesarCompra"> Continuar Compra</button>
             <span class="precio">Precio Total:$
                 <p class="precioTotal" id="precioTotal"></p>
             </span>
@@ -87,7 +88,7 @@
         <div class="content">
             <h3>Estudio de Manicura</h3>
             <p>La mejor Calidad y al Mejor Precio </p>
-            <a href="#" class="btn">Pida su Turno</a>
+            <a href="#contacto" class="btn">Consultar un turno</a>
         </div>
     </section>
 
