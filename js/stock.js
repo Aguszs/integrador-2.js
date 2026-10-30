@@ -1,10 +1,10 @@
 const stockProductos = [
-    { id: 1, nombre: "Elegante", precio: 450, img: "/css/blaco y negro.jpg" },
-    { id: 2, nombre: "Primavera", precio: 300, img: "/css/elegante.jpg" },
-    { id: 3, nombre: "Relieve", precio: 840, img: "/css/le.jpg" },
-    { id: 4, nombre: "Con Formas", precio: 380, img: "/css/cara.jpg" },
-    { id: 5, nombre: "Print B&N", precio: 240, img: "/css/rayas.jpg" },
-    { id: 6, nombre: "Jade", precio: 900, img: "/css/uñas-estructurales-11.webp" }
+    { id: 1, nombre: 'Elegante', precio: 450, img: '/css/blaco y negro.jpg' },
+    { id: 2, nombre: 'Primavera', precio: 300, img: '/css/elegante.jpg' },
+    { id: 3, nombre: 'Relieve', precio: 840, img: '/css/le.jpg' },
+    { id: 4, nombre: 'Con Formas', precio: 380, img: '/css/cara.jpg' },
+    { id: 5, nombre: 'Print B&N', precio: 240, img: '/css/rayas.jpg' },
+    { id: 6, nombre: 'Jade', precio: 900, img: '/css/uñas-estructurales-11.webp' }
 ];
 
 const contenedor = document.querySelector('#contenedor');
@@ -14,10 +14,15 @@ const vaciarCarrito = document.querySelector('#vaciarCarrito');
 const precioTotal = document.querySelector('#precioTotal');
 const procesarCompra = document.querySelector('#procesarCompra');
 const modalBody = document.querySelector('.cart-items-container .modal-body');
+const formatoPrecio = new Intl.NumberFormat('es-AR', {
+    style: 'currency',
+    currency: 'ARS',
+    maximumFractionDigits: 0
+});
 
 function cargarCarrito() {
     try {
-        const saved = JSON.parse(localStorage.getItem('carrito')) || [];
+        const saved = JSON.parse(localStorage.getItem('carrito') || '[]');
         if (!Array.isArray(saved)) return [];
         return saved.reduce((items, savedItem) => {
             const product = stockProductos.find(item => item.id === savedItem?.id);
@@ -38,8 +43,18 @@ function guardarCarrito() {
     try {
         localStorage.setItem('carrito', JSON.stringify(carrito));
     } catch {
-        // El catálogo sigue funcionando si el navegador no permite guardar datos.
+        // El carrito sigue disponible hasta cerrar o recargar la pestaña.
     }
+}
+
+function crearBoton(texto, accion, etiqueta) {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'btn cart-action';
+    button.textContent = texto;
+    button.dataset.action = accion;
+    button.setAttribute('aria-label', etiqueta);
+    return button;
 }
 
 function actualizarCarrito() {
@@ -48,31 +63,58 @@ function actualizarCarrito() {
 
     if (carrito.length === 0) {
         const emptyMessage = document.createElement('p');
-        emptyMessage.className = 'text-center text-primary parrafo';
+        emptyMessage.className = 'cart-empty';
         emptyMessage.textContent = 'Todavía no agregaste productos.';
         modalBody.appendChild(emptyMessage);
     } else {
         carrito.forEach(product => {
-            const item = document.createElement('div');
-            item.className = 'modal-contenedor';
-            item.innerHTML = `
-                <img src="${product.img}" alt="">
-                <div>
-                    <p class="nombreItem">${product.nombre}</p>
-                    <p>Precio: $${product.precio}</p>
-                    <p>Cantidad: ${product.cantidad}</p>
-                    <button class="btn btn-danger" type="button" data-remove="${product.id}">
-                        Eliminar producto
-                    </button>
-                </div>
-            `;
+            const item = document.createElement('article');
+            item.className = 'cart-item';
+
+            const image = document.createElement('img');
+            image.src = product.img;
+            image.alt = 'Diseño de uñas ' + product.nombre;
+            image.loading = 'lazy';
+
+            const details = document.createElement('div');
+            details.className = 'cart-item-details';
+
+            const title = document.createElement('h3');
+            title.textContent = product.nombre;
+
+            const price = document.createElement('p');
+            price.textContent = formatoPrecio.format(product.precio) + ' c/u';
+
+            const quantity = document.createElement('p');
+            quantity.className = 'cart-quantity';
+            quantity.textContent = 'Cantidad: ' + product.cantidad;
+
+            const controls = document.createElement('div');
+            controls.className = 'cart-item-controls';
+            controls.append(
+                crearBoton('−', 'decrease', 'Quitar una unidad de ' + product.nombre),
+                crearBoton('+', 'increase', 'Agregar una unidad de ' + product.nombre),
+                crearBoton('Eliminar', 'remove', 'Eliminar ' + product.nombre + ' del carrito')
+            );
+
+            details.append(title, price, quantity, controls);
+            item.append(image, details);
             modalBody.appendChild(item);
         });
     }
 
-    modalBody.querySelectorAll('[data-remove]').forEach(button => {
+    modalBody.querySelectorAll('[data-action]').forEach(button => {
         button.addEventListener('click', () => {
-            carrito = carrito.filter(product => product.id !== Number(button.dataset.remove));
+            const item = button.closest('.cart-item');
+            const productName = item?.querySelector('h3')?.textContent;
+            const product = carrito.find(entry => entry.nombre === productName);
+            if (!product) return;
+
+            if (button.dataset.action === 'increase') product.cantidad += 1;
+            if (button.dataset.action === 'decrease') product.cantidad -= 1;
+            if (button.dataset.action === 'remove' || product.cantidad <= 0) {
+                carrito = carrito.filter(entry => entry.id !== product.id);
+            }
             actualizarCarrito();
         });
     });
@@ -80,10 +122,10 @@ function actualizarCarrito() {
     const totalItems = carrito.reduce((total, product) => total + product.cantidad, 0);
     if (cartCount) cartCount.textContent = totalItems;
     if (precioTotal) {
-        precioTotal.textContent = carrito.reduce(
+        precioTotal.textContent = formatoPrecio.format(carrito.reduce(
             (total, product) => total + product.cantidad * product.precio,
             0
-        ).toLocaleString('es-AR');
+        ));
     }
     guardarCarrito();
 }
@@ -95,13 +137,26 @@ function renderizarProductos() {
     stockProductos.forEach(product => {
         const card = document.createElement('article');
         card.className = 'box';
-        card.innerHTML = `
-            <img src="${product.img}" alt="Diseño de uñas ${product.nombre}" loading="lazy">
-            <h3>${product.nombre}</h3>
-            <div class="price">$${product.precio}</div>
-            <button class="btn btn-add-cart" type="button">Añadir al carrito</button>
-        `;
-        card.querySelector('button').addEventListener('click', () => agregarProducto(product.id));
+
+        const image = document.createElement('img');
+        image.src = product.img;
+        image.alt = 'Diseño de uñas ' + product.nombre;
+        image.loading = 'lazy';
+
+        const title = document.createElement('h3');
+        title.textContent = product.nombre;
+
+        const price = document.createElement('p');
+        price.className = 'price';
+        price.textContent = formatoPrecio.format(product.precio);
+
+        const addButton = document.createElement('button');
+        addButton.type = 'button';
+        addButton.className = 'btn btn-add-cart';
+        addButton.textContent = 'Agregar al carrito';
+        addButton.addEventListener('click', () => agregarProducto(product.id));
+
+        card.append(image, title, price, addButton);
         contenedor.appendChild(card);
     });
 }
@@ -111,11 +166,9 @@ function agregarProducto(id) {
     if (!product) return;
 
     const existing = carrito.find(item => item.id === id);
-    if (existing) {
-        existing.cantidad += 1;
-    } else {
-        carrito.push({ ...product, cantidad: 1 });
-    }
+    if (existing) existing.cantidad += 1;
+    else carrito.push({ ...product, cantidad: 1 });
+
     actualizarCarrito();
 }
 
@@ -129,20 +182,18 @@ procesarCompra?.addEventListener('click', () => {
         Swal.fire({
             title: 'Tu carrito está vacío',
             text: 'Agregá un producto para continuar.',
-            icon: 'error',
-            confirmButtonText: 'Aceptar'
+            icon: 'info',
+            confirmButtonText: 'Volver al catálogo'
         });
         return;
     }
 
     Swal.fire({
-        title: 'Compra de prueba',
-        text: 'La compra se simuló correctamente. No se realizó ningún pago.',
+        title: 'Pedido listo para coordinar',
+        text: 'Revisá el detalle del carrito y contactanos para confirmar disponibilidad y forma de pago.',
         icon: 'success',
         confirmButtonText: 'Aceptar'
     });
-    carrito = [];
-    actualizarCarrito();
 });
 
 renderizarProductos();
